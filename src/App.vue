@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navigation />
-    <AddButton />
+    <AddButton v-show="this.$route.path !== '/'"/>
     <router-view/>
     <ModalWindow v-show="isModalVisible" @close-modal="handleCloseModal" />
   </div>
