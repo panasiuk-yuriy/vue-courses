@@ -1,4 +1,4 @@
-# courses_vue
+[DEMO LINK](https://panasiuk-yuriy.github.io/vue-courses/)
 
 ## Project setup
 ```
