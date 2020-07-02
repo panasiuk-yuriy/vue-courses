@@ -1,13 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navigation />
+    <AddButton />
     <router-view/>
+    <ModalWindow v-show="isModalVisible" @close-modal="handleCloseModal" />
   </div>
 </template>
 
+<script>
+import Navigation from './components/Navigation'
+import AddButton from './components/AddButton'
+import ModalWindow from './views/ModalWindow'
+import { mapGetters, mapMutations } from 'vuex'
+export default {
+  components: {
+    Navigation, AddButton, ModalWindow
+  },
+  computed: mapGetters(['isModalVisible']),
+
+  methods: {
+    ...mapMutations(['closeModal']),
+    handleCloseModal () {
+      this.closeModal()
+    }
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -16,17 +34,7 @@
   text-align: center;
   color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.btn {
+  margin: 0.2rem;
 }
 </style>
